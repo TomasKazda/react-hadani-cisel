@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import TextOutput, {Result2 as Done} from "./componets/result"
 
 function App() {
+  const [hidden, setHidden] = useState(0)
+
+  useEffect(() => {
+    setHidden(Math.round(Math.random() * 100))
+  }, []);
+
+  let compare = "méně";
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <TextOutput text={hidden} accent="!"></TextOutput>
+       <Done/>
     </div>
   );
 }
