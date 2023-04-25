@@ -24,7 +24,7 @@ function App() {
       <TextOutput cnt={cnt} accent="!"></TextOutput>
       <Input getInputNumber={btnClick} />  
       {(inputNumber === hidden) ? <Done number={inputNumber} cnt={cnt} /> 
-        : <CompareTo hidden={hidden} number={inputNumber} cnt={cnt} /> }
+        : <CompareTo hidden={hidden} number={inputNumber} /> }
     </div>
   );
 }
