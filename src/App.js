@@ -1,19 +1,30 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import TextOutput, {Result2 as Done} from "./componets/result"
+import TextOutput, {CompareTo, Result2 as Done} from "./componets/result"
+import Input from './componets/Input'
 
 function App() {
+  const [inputNumber, setInputNumber] = useState(0)
   const [hidden, setHidden] = useState(0)
+  const [cnt, setCnt] = useState(1)
 
   useEffect(() => {
     setHidden(Math.round(Math.random() * 100))
   }, []);
+  
+  const btnClick = (number) => {
+    if (hidden !== number) {
+      setCnt((c) => c + 1)
+    }
+    setInputNumber(number)
+  }
 
-  let compare = "méně";
   return (
     <div className="App">
-       <TextOutput text={hidden} accent="!"></TextOutput>
-       <Done/>
+      <TextOutput cnt={cnt} accent="!"></TextOutput>
+      <Input getInputNumber={btnClick} />  
+      {(inputNumber === hidden) ? <Done number={inputNumber} cnt={cnt} /> 
+        : <CompareTo hidden={hidden} number={inputNumber} cnt={cnt} /> }
     </div>
   );
 }
